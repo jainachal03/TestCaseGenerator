@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<title>
+"Test Cases Generator"
+</title>
+<head>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!--- I also have to take input the number of test cases that are supposed to be taken -->
+    <!-- Also the upper and the lower limits on how to create these numbers. -->
+    <div class = "mainDiv">
+        <div id = "number">
+            <h2> Generate a Random Number</h2>
+            lower_limit:<input id = "lower_limit" type = "number" >
+            &ensp; <!-- To insert horizontal space-->
+
+            upper_limit:<input id = "upper_limit" type = "number" >
+            <input type = "button" onclick=" getLimits() " value = "submit">
+
+            <!-- &ensp; -->
+            <br>
+            <textarea id = "randomNumber" rows = "4" cols = "20"></textarea>
+
+            <script>
+                function getLimits(){
+                    var ll = Number.parseInt(document.getElementById("lower_limit").value);
+                    var ul = Number.parseInt(document.getElementById("upper_limit").value);
+                    var randomnumber = Math.floor(Math.random() * (ul - ll + 1)) + ll;
+                    document.getElementById("randomNumber").value = randomnumber;
+                }
+
+            </script>
+
+            <b><hr></b>
+
+        </div>
+
+
+        <div id = "array">
+
+            <h2> Generate a Random Array</h2>
+            number of Elements:<input type = "number" id = "numOfElements">
+            &ensp;
+
+            lower_limit:<input id = "lower_limit_array" type = "number" >
+            &ensp; <!-- To insert horizontal space-->
+
+            upper_limit:<input id = "upper_limit_array" type = "number" >
+
+            <input type = "button" onClick = "displayArray()" value = "submit">
+
+            &ensp;
+            <br>
+            <textarea id = "randomArray" rows = "6" cols = "30"></textarea>
+
+            <script>
+                function displayArray(){
+                    var nums = Number.parseInt(document.getElementById("numOfElements").value);
+                    var ll = Number.parseInt(document.getElementById("lower_limit_array").value);
+                    var ul = Number.parseInt(document.getElementById("upper_limit_array").value);
+                    var txtArea = document.getElementById('randomArray')
+                    const arr = Array.from({length: nums}, () => Math.floor(Math.random() * ul + ll));
+                    arr.forEach(function(elem){
+                        var value = elem;
+                        txtArea.value += value + ' ';
+
+                    });
+                }
+
+            </script>
+            &ensp;
+            <hr>
+        </div>
+
+    </div>
+
+</body>
+
+</html>
